@@ -1,11 +1,12 @@
 {
   "name": "nyvex-portfolio",
-  "version": "2.11.0",
+  "version": "5.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "verify:export": "node scripts/verify-export.mjs"
   },
   "dependencies": {
     "next": "16.4.6",
@@ -23,7 +24,8 @@
     "@tailwindcss/postcss": "^4.1.0",
     "postcss": "^8.4.49"
   },
+  "description": "NYVEX — Dmitriy Savva personal portfolio. English and Ukrainian static Next.js export for Cloudflare Pages.",
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22"
   }
 }

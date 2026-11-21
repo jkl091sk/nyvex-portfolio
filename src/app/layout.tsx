@@ -1,0 +1,4 @@
+import type {Metadata} from 'next';
+import '@/app/globals.css';
+export const metadata:Metadata={title:{default:'NYVEX — Dmitriy Savva | Desktop & Web Developer',template:'%s | NYVEX'},description:'Dmitriy Savva — Desktop & Web Developer. Creative development, real solutions.',robots:{index:true,follow:true},icons:{icon:'/brand/nyvex-mark.svg'}};
+export default function RootLayout({children}:{children:React.ReactNode}) {return <html lang="en"><body><div className="nyvex-atmosphere" aria-hidden="true"><div className="nyvex-atmosphere__mesh"/><div className="nyvex-atmosphere__orb nyvex-atmosphere__orb--violet"/><div className="nyvex-atmosphere__orb nyvex-atmosphere__orb--teal"/><div className="nyvex-atmosphere__orb nyvex-atmosphere__orb--blue"/><div className="nyvex-atmosphere__vignette"/></div>{children}</body></html>}

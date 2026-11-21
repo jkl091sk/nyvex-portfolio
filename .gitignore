@@ -5,5 +5,3 @@ out/
 !.env.example
 .DS_Store
 *.tsbuildinfo
-.dev.vars*
-*.log
