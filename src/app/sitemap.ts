@@ -1,5 +1,7 @@
 import type {MetadataRoute} from 'next';
 import {SITE_URL,seoUrl,type SeoPage} from '@/lib/seo';
+export const dynamic = 'force-static';
+
 const pages:SeoPage[]=['home','projects','initra-app','initra-site','about','services','contact','privacy-policy'];
 const langs=(page:SeoPage)=>({en:seoUrl('en',page),uk:seoUrl('ua',page),'x-default':seoUrl('en',page)});
 export default function sitemap():MetadataRoute.Sitemap{
