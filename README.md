@@ -1,4 +1,4 @@
-# NYVEX — Cloudflare Pages source package (v5.1)
+# NYVEX — Cloudflare Pages source package (v5.2)
 
 Portfolio for Dmitriy Savva. Includes English (`/en/`) and Ukrainian (`/ua/`) site, Initra App and Initra Website portfolio, About, Services, Contact and Privacy Policy.
 
@@ -26,8 +26,8 @@ The compiled static site will be in `out/`, ready for Cloudflare Pages.
 - Node.js: `22`
 - Root directory: `/`
 
-Contact form defaults to mailto; `functions/api/contact.ts` is an **optional**, unconfigured server-side email delivery function.
-Never commit your real API tokens to the repository.
+Contact form submits directly to FormSubmit.co using AJAX; HTML POST remains available without JavaScript. No API keys, paid domain, Cloudflare Functions or extra build variables are required.
+**First-use activation required:** FormSubmit sends a confirmation email to `dimasavva63@gmail.com` after the first submission. Until that address is confirmed, delivery is not ready. See `CONTACT_FORMSUBMIT_RU.md`.
 
 ## Verification status
 Deployment configuration, EN/UA route mappings and TSX syntax checked in the authoring environment. Real `next build`, export verification, Cloudflare deploy and physical-device testing **not yet verified** because the npm registry was unreachable there. Use the commands above or build on Cloudflare.
