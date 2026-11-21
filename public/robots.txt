@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://nyvex-bq4.pages.dev/sitemap.xml
