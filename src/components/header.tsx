@@ -17,7 +17,7 @@ export default function Header({locale}:{locale:Locale}) {
  useEffect(()=>setOpen(false),[path]);
  useEffect(()=>{
   document.body.classList.toggle('menu-open',open);
-  const background=[document.querySelector('main'),document.querySelector('footer')].filter((element):element is Element=>element!==null);
+  const background=[document.querySelector('main'),document.querySelector('footer')].filter((element):element is HTMLElement=>element!==null);
   if(open)background.forEach(el=>el.setAttribute('inert',''));
   else background.forEach(el=>el.removeAttribute('inert'));
   return()=>{document.body.classList.remove('menu-open');background.forEach(el=>el.removeAttribute('inert'))};
