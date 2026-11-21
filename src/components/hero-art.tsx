@@ -1,36 +1,27 @@
-'use client';
-import {useRef,useState,type PointerEvent} from 'react';
-import {motion,useReducedMotion} from 'motion/react';
-import {ArrowUpRight,Check,Code2,Globe2,Terminal} from 'lucide-react';
 import type {Locale} from '@/lib/content';
-
-/** An interactive design-and-code workspace, not the previous oversized letter N. */
+/** Decorative monolith from the NYVEX artboard; all interaction stays in the existing navigation and forms. */
 export default function HeroArt({locale}:{locale:Locale}){
- const ua=locale==='ua';
- const reduced=useReducedMotion();
- const [offset,setOffset]=useState({x:0,y:0});
- const root=useRef<HTMLDivElement>(null);
- const move=(e:PointerEvent<HTMLDivElement>)=>{
-  if(reduced||e.pointerType!=='mouse'||!root.current)return;
-  const r=root.current.getBoundingClientRect();
-  setOffset({x:(e.clientX-r.left)/r.width-.5,y:(e.clientY-r.top)/r.height-.5});
- };
- const spring={type:'spring' as const,stiffness:46,damping:18};
- return <div className="studio-stage" ref={root} onPointerMove={move} onPointerLeave={()=>setOffset({x:0,y:0})} aria-label="Decorative studio workspace showcasing web design, code and software">
-  <div className="studio-stage__grid" aria-hidden="true"/><div className="studio-stage__glow" aria-hidden="true"/>
-  <div className="stage-label stage-label--top"><span className="pulse-dot"/> {ua?'NYVEX / ЦИФРОВИЙ ПРОСТІР':'NYVEX / DIGITAL WORKSPACE'}</div>
-  <div className="stage-label stage-label--bottom">{ua?'ІНТЕРАКТИВНА СЦЕНА / 2026':'INTERACTIVE VISUAL / 2026'} <span>✳</span></div>
-  <motion.div className="workspace workspace--main" animate={reduced?{rotate:-6}:{rotate:-6,x:offset.x*12,y:offset.y*9}} transition={spring}>
-   <div className="workspace__chrome"><div className="workspace__lights"><i/><i/><i/></div><span>nyvex / creative-workspace</span><Globe2 size={14}/></div>
-   <div className="workspace__body"><div className="workspace__overline"><span>{ua?'КРЕАТИВНІ СИСТЕМИ':'CREATIVE SYSTEMS'}</span><span>01 — 03</span></div>
-   <div className="workspace__hero"><div className="workspace__small">{ua?'ДИЗАЙН + РОЗРОБКА':'DESIGN + DEVELOPMENT'}</div><div className="workspace__big">{ua?'СТВОРЕНО':'CRAFTED'}<br/><i>{ua?'ЗІ ЗМІСТОМ.':'FOR IMPACT.'}</i></div><div className="workspace__desc">{ua?'Продумана ідея. Якісна реалізація.':'The right idea, thoughtfully built.'}</div></div>
-   <div className="workspace__tiles"><div><span>01 / CONCEPT</span><b>{ua?'Новий погляд.':'Think different.'}</b><ArrowUpRight size={17}/></div><div><span>02 / EXECUTION</span><b>{ua?'Кращий код.':'Build better.'}</b><ArrowUpRight size={17}/></div></div></div>
-  </motion.div>
-  <motion.div className="workspace workspace--code" animate={reduced?{rotate:7}:{rotate:7,x:-offset.x*24,y:-offset.y*20}} transition={spring}>
-   <div className="workspace__chrome"><div className="workspace__lights"><i/><i/><i/></div><span><Code2 size={13}/> interface.tsx</span></div>
-   <div className="code-lines"><div><b>01</b><span className="token-purple">const</span> idea = <span className="token-cyan">'your vision'</span>;</div><div><b>02</b><span className="token-purple">const</span> craft = <span className="token-cyan">'our code'</span>;</div><div><b>03</b><span className="token-purple">function</span> <span className="token-lilac">create</span>() {'{'}</div><div><b>04</b>&nbsp;&nbsp;<span className="token-purple">return</span> <span className="token-cyan">'something real'</span>;</div><div><b>05</b>{'}'}</div></div>
-  </motion.div>
-  <motion.div className="workspace workspace--status" animate={reduced?{rotate:5}:{rotate:5,x:offset.x*25,y:-offset.y*15}} transition={spring}><span className="status-orb"><Check size={18}/></span><div><b>{ua?'ЗБІРКА ГОТОВА':'BUILD SUCCESSFUL'}</b><small>{ua?'ідея → продукт':'idea → experience'}</small></div><Terminal size={18}/></motion.div>
-  <span className="studio-stage__cross studio-stage__cross--a" aria-hidden="true">+</span><span className="studio-stage__cross studio-stage__cross--b" aria-hidden="true">+</span>
- </div>
+ return <div className="nyvex-monolith" aria-hidden="true">
+  <svg className="nyvex-monolith__svg" viewBox="0 0 570 565" xmlns="http://www.w3.org/2000/svg" focusable="false">
+   <defs>
+    <linearGradient id="nyvex-front" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#AF2BBF"/><stop offset="1" stopColor="#9A55C8"/></linearGradient>
+    <linearGradient id="nyvex-side" x1="0" x2="1" y1="0" y2="0"><stop stopColor="#3F636C"/><stop offset="1" stopColor="#203A43"/></linearGradient>
+    <linearGradient id="nyvex-diag" x1="0" x2="1" y1="0" y2="1"><stop stopColor="#6C91BF"/><stop offset="1" stopColor="#254B52"/></linearGradient>
+   </defs>
+   <ellipse cx="278" cy="506" rx="198" ry="22" fill="#AF2BBF" opacity=".14"/>
+   <g className="nyvex-monolith__letter">
+    <path d="M132 160L164 128H229L198 160Z" fill="#7395B1" stroke="#A6C1D4" strokeWidth=".8"/>
+    <path d="M198 160L229 128V410L198 442Z" fill="url(#nyvex-side)"/>
+    <path d="M132 160H198V442H132Z" fill="url(#nyvex-front)"/>
+    <path d="M360 160L392 128H454L423 160Z" fill="#7395B1" stroke="#A6C1D4" strokeWidth=".8"/>
+    <path d="M423 160L454 128V410L423 442Z" fill="url(#nyvex-side)"/>
+    <path d="M360 160H423V442H360Z" fill="url(#nyvex-front)"/>
+    <path d="M198 160L229 128L423 410L392 442Z" fill="#314B53"/>
+    <path d="M198 160L360 442H423L229 128Z" fill="url(#nyvex-diag)" stroke="#86B8C7" strokeWidth=".9"/>
+    <path d="M198 160L360 442H423L229 128" fill="none" stroke="#DFF7FA" strokeWidth=".6" opacity=".5"/>
+   </g>
+   <path d="M493 160h13m-6 0v282m-7 0h13" fill="none" stroke="#5FB0B7" strokeWidth=".8" opacity=".55"/>
+  </svg>
+  <p className="nyvex-monolith__caption mono">FIG. 01 — {locale==='ua'?'N / МОНОЛІТ':'N MONOLITH'}</p>
+ </div>;
 }

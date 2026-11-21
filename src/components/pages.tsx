@@ -13,25 +13,44 @@ const eyebrow = (number:string,title:string) => <div className="eyebrow"><span c
 
 export function Home({locale}:{locale:Locale}) {
  const t=copy(locale),ua=locale==='ua';
- return <main>
-  <section className={`hero container hero--${locale}`}>
+ const stack=[['C#','DESKTOP'],['.NET','DESKTOP'],['WPF','DESKTOP UI'],['HTML','WEB'],['CSS','WEB'],['JS','WEB'],['PYTHON','SCRIPTING'],['NEXT.JS','WEB']];
+ return <main className="nyvex-home">
+  <section className={`hero hero--${locale} container`}>
    <div className="hero__top">
     <Reveal className="hero__copy">
-     <div className="hero__availability"><span className="pulse-dot"/>{ua?'ВІДКРИТИЙ ДО СПІВПРАЦІ':'OPEN FOR CREATIVE COLLABORATIONS'}<span className="hero__avail-arrow"> ↗ </span></div>
-     <div className="eyebrow hero__identity">DMITRIY SAVVA <span>—</span> DESKTOP & WEB DEVELOPER</div>
-     <h1 className="hero__heading"><span>{t.home.titleA}</span><span className="hero__heading--outline">{t.home.titleB}</span><span>{t.home.titleC}</span><em>{t.home.titleD}</em></h1>
+     <div className="hero__identity mono">DMITRIY SAVVA / {ua?'НЕЗАЛЕЖНИЙ РОЗРОБНИК':'INDEPENDENT DEVELOPER'}</div>
+     <h1 className="hero__heading hero__heading--new">
+      {ua?<><span>СТВОРЮЮ</span><span>ЦИФРОВІ</span><span>РІШЕННЯ</span><span className="hero__heading--outline">ПОЗА</span><span className="hero__heading--outline">ШАБЛОНАМИ.</span></>:<><span>CRAFTING</span><span>DIGITAL</span><span>EXPERIENCES</span><span className="hero__heading--outline">BEYOND</span><span className="hero__heading--outline">ORDINARY.</span></>}
+     </h1>
+     <p className="hero__intro">{t.home.intro}</p>
+     <div className="hero__actions">
+      <Link className="button button--primary" href={`/${locale}/projects/`}>{t.universal.explore}<ArrowUpRight size={17}/></Link>
+      <Link className="button button--outline" href={`/${locale}/contact/`}>{t.universal.talk}<ArrowUpRight size={17}/></Link>
+     </div>
     </Reveal>
-    <Reveal className="hero__aside"><span className="hero__aside-star" aria-hidden="true">✳</span><p className="hero__intro">{t.home.intro}</p><div className="hero__actions"><Link className="button button--light" href={`/${locale}/projects/`}>{t.universal.explore}<ArrowUpRight size={18}/></Link><Link className="button button--outline" href={`/${locale}/contact/`}>{t.universal.talk}<ArrowUpRight size={18}/></Link></div><p className="hero__micro">{ua?'ПРОДУМАНИЙ ДИЗАЙН. ПРАЦЮЮЧИЙ КОД.':'THOUGHTFUL DESIGN. WORKING CODE.'}</p></Reveal>
+    <Reveal className="hero__visual"><HeroArt locale={locale}/></Reveal>
    </div>
-   <HeroArt locale={locale}/>
-   <div className="hero__foot"><span>NYVEX® / 2026</span><span>{t.home.mini}</span><span>{t.universal.scroll} ↓</span></div>
   </section>
-
-  <section className="section section--works container" id="work"><Reveal><div className="section__intro"><div>{eyebrow('01',ua?'ОБРАНІ ПРОЄКТИ':'FEATURED WORK')}<h2 className="section-heading">{t.home.featured}</h2></div><p>{t.home.selectedLead}</p></div></Reveal><div className="work-grid"><ProjectCard locale={locale} index={0}/><ProjectCard locale={locale} index={1}/></div><Reveal><Link className="text-link" href={`/${locale}/projects/`}>{t.universal.all}<ArrowUpRight size={20}/></Link></Reveal></section>
-
-  <section className="section section--about container"><Reveal>{eyebrow('02',t.home.aboutEyebrow)}<div className="about-feature"><div className="about-feature__word">{ua?'ІДЕЇ':'IDEAS'}<span>↘</span></div><div><h2 className="section-heading">{t.home.aboutTitle}</h2><p>{t.home.aboutText}</p><Link className="text-link" href={`/${locale}/about/`}>{t.home.more}<ArrowUpRight size={20}/></Link></div></div></Reveal></section>
-
-  <section className="section section--services container"><Reveal><div className="section__intro"><div>{eyebrow('03',ua?'ПОСЛУГИ':'SERVICES')}<h2 className="section-heading">{t.home.serviceHead}</h2></div><p>{t.home.serviceText}</p></div></Reveal><div className="services-list">{t.services.list.map((s,i)=><Reveal key={s.num} delay={i*.06}><Link className="service-row" href={`/${locale}/services/`}><span className="service-row__num">{s.num}</span><h3>{s.name}</h3><p>{s.desc}</p><span className="round-arrow round-arrow--small"><ArrowUpRight size={21}/></span></Link></Reveal>)}</div></section>
+  <section className="nyvex-intro container" aria-labelledby="intro-heading">
+   <div className="nyvex-section-tag mono">[01] {ua?'ПРО МЕНЕ':'INTRO'}</div>
+   <div><h2 id="intro-heading">{ua?'Створюю сайти, десктопні програми та цифрові продукти — з чистим кодом і увагою до деталей.':'I build websites, desktop applications and custom software — with clean code and close attention to detail.'}</h2><Link className="text-link" href={`/${locale}/about/`}>{t.home.more}<ArrowUpRight size={18}/></Link></div>
+  </section>
+  <section className="section section--works container" id="work" aria-labelledby="work-heading">
+   <div className="nyvex-section-tag mono">[02] {ua?'ОБРАНІ ПРОЄКТИ':'SELECTED WORK'}</div>
+   <h2 id="work-heading" className="nyvex-sr-only">{t.home.featured}</h2>
+   <div className="work-grid"><ProjectCard locale={locale} index={0}/><ProjectCard locale={locale} index={1}/></div>
+   <Link className="text-link" href={`/${locale}/projects/`}>{t.universal.all}<ArrowUpRight size={18}/></Link>
+  </section>
+  <section className="nyvex-expertise container" aria-labelledby="expertise-heading">
+   <div className="nyvex-section-tag mono">[03] {ua?'ТЕХНОЛОГІЇ':'EXPERTISE'}</div>
+   <h2 id="expertise-heading" className="nyvex-sr-only">{t.about.skills}</h2>
+   <div className="nyvex-expertise__grid">{stack.map(([name,category])=><div className="nyvex-expertise__cell" key={name}><small>{category}</small><strong>{name}</strong></div>)}</div>
+  </section>
+  <section className="section section--services container" aria-labelledby="services-heading">
+   <div className="nyvex-section-tag mono">[04] {ua?'ПОСЛУГИ':'SERVICES'}</div>
+   <h2 id="services-heading" className="nyvex-sr-only">{t.services.heading}</h2>
+   <div className="services-list">{t.services.list.map((s,i)=><Reveal key={s.num} delay={i*.06}><Link className="service-row" href={`/${locale}/services/`}><span className="service-row__num">{s.num}</span><h3>{s.name}</h3><p>{s.desc}</p><span className="round-arrow round-arrow--small"><ArrowUpRight size={21}/></span></Link></Reveal>)}</div>
+  </section>
   <SectionCta locale={locale}/>
  </main>;
 }
