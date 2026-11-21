@@ -13,7 +13,7 @@ let errors=[];
 for(const file of expected){const filename=path.join(output,file);
  if(!existsSync(filename)){errors.push('MISSING: '+file);continue;}
  if(file.endsWith('.html')){const html=readFileSync(filename,'utf8');
-  if(!/<html[\\s>]/i.test(html)||!/<body[\\s>]/i.test(html))errors.push('INVALID HTML: '+file);
+  if(!/<html[\s>]/i.test(html)||!/<body[\s>]/i.test(html))errors.push('INVALID HTML: '+file);
   if(!html.includes('og:image'))errors.push('MISSING OG IMAGE: '+file);
   if(!html.includes('canonical'))errors.push('MISSING CANONICAL: '+file);
   if(file.startsWith('en/')||file.startsWith('ua/')){
@@ -29,5 +29,5 @@ if(existsSync(sitemapPath)){
 }
 const assets=path.join(output,'_next','static');
 if(!existsSync(assets)||readdirSync(assets).length===0)errors.push('MISSING NEXT STATIC ASSETS');
-if(errors.length){console.error(errors.join('\\n'));process.exit(1);}
+if(errors.length){console.error(errors.join('\n'));process.exit(1);}
 console.log(`PASS: ${expected.length} files, localized metadata, sitemap, social image, favicon, static assets.`);
