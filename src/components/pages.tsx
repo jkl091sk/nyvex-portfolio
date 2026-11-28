@@ -36,7 +36,7 @@ export function Home({locale}:{locale:Locale}) {
  </main>;
 }
 
-export function ProjectsPage({locale}:{locale:Locale}) {const t=copy(locale),ua=locale==='ua';return <main><PageIntro eyebrow={t.projects.eyebrow} heading={t.projects.heading} text={t.projects.intro} number="01"/><section className="container section projects-list"><div className="list-meta"><span>{ua?'ВИБРАНІ РОБОТИ':'CURATED / SELECTED WORK'}</span><span>02 / 02</span></div><div className="work-grid"><ProjectCard locale={locale} index={0}/><ProjectCard locale={locale} index={1}/></div></section><SectionCta locale={locale}/></main>}
+export function ProjectsPage({locale}:{locale:Locale}) {const t=copy(locale),ua=locale==='ua';return <main><PageIntro eyebrow={t.projects.eyebrow} heading={t.projects.heading} text={t.projects.intro} number="01"/><section className="container section projects-list"><div className="list-meta"><span>{ua?'ВИБРАНІ РОБОТИ':'CURATED / SELECTED WORK'}</span><span>03 / 03</span></div><div className="work-grid"><ProjectCard locale={locale} index={0}/><ProjectCard locale={locale} index={1}/></div><Link className="rt-project-link" href={`/${locale}/projects/roundtrace/`}><img src="/roundtrace/logo.svg" width="54" height="54" alt=""/><div><strong>RoundTrace</strong><span>{ua?'Історія матчів FACEIT · Завантаження та встановлення':'FACEIT match history · Download and installation'}</span></div><ArrowUpRight size={20}/></Link></section><SectionCta locale={locale}/></main>}
 
 export function ProjectPage({locale,slug}:{locale:Locale;slug:string}){
  const t=copy(locale),p=PROJECTS.find(x=>x.slug===slug);if(!p)return null;

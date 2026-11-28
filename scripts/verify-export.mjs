@@ -5,8 +5,8 @@ const expected=[
  'index.html','404.html','sitemap.xml',
  'en/index.html','ua/index.html',
  ...['about','projects','services','contact','privacy-policy'].flatMap(x=>[`en/${x}/index.html`,`ua/${x}/index.html`]),
- ...['initra-app','initra-site'].flatMap(x=>[`en/projects/${x}/index.html`,`ua/projects/${x}/index.html`]),
- '_headers','robots.txt','brand/nyvex-mark.svg','og/nyvex-social.png','favicon.ico','apple-touch-icon.png','icon-192.png'
+ ...['initra-app','initra-site','roundtrace'].flatMap(x=>[`en/projects/${x}/index.html`,`ua/projects/${x}/index.html`]),
+ 'roundtrace/RoundTrace-0.3.1.zip','roundtrace/logo.svg','_headers','robots.txt','brand/nyvex-mark.svg','og/nyvex-social.png','favicon.ico','apple-touch-icon.png','icon-192.png'
 ];
 if(!existsSync(output)){console.error('ERROR: out/ is missing; run npm run build');process.exit(1);}
 let errors=[];
@@ -17,7 +17,7 @@ for(const file of expected){const filename=path.join(output,file);
   if(!html.includes('og:image'))errors.push('MISSING OG IMAGE: '+file);
   if(!html.includes('canonical'))errors.push('MISSING CANONICAL: '+file);
   if(file.startsWith('en/')||file.startsWith('ua/')){
-   if(!html.includes('hreflang'))errors.push('MISSING HREFLANG: '+file);
+   if(!html.toLowerCase().includes('hreflang'))errors.push('MISSING HREFLANG: '+file);
   }
  }
 }

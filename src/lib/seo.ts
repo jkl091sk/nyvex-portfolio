@@ -2,12 +2,13 @@ import type {Metadata} from 'next';
 import type {Locale} from '@/lib/content';
 
 export const SITE_URL = 'https://nyvex-bq4.pages.dev';
-export type SeoPage = 'home' | 'projects' | 'about' | 'services' | 'contact' | 'privacy-policy' | 'initra-app' | 'initra-site';
+export type SeoPage = 'home' | 'projects' | 'about' | 'services' | 'contact' | 'privacy-policy' | 'initra-app' | 'initra-site' | 'roundtrace';
 type Info = {title:string; description:string};
 const details:Record<Locale,Record<SeoPage,Info>> = {
  en:{
+  roundtrace:{title:'RoundTrace for FACEIT',description:'Download RoundTrace for Chrome or Brave and follow the installation guide.'},
   home:{title:'Dmitriy Savva — Desktop & Web Developer',description:'NYVEX is the portfolio of Dmitriy Savva, a creative desktop and web developer building responsive websites, Linux applications and thoughtful digital experiences.'},
-  projects:{title:'Projects — Initra App & Website',description:'Explore projects by Dmitriy Savva: Initra, a Linux setup manager built with Python and PySide6, and its official responsive website.'},
+  projects:{title:'Projects — Initra & RoundTrace',description:'Explore projects by Dmitriy Savva: Initra, a Linux setup manager built with Python and PySide6, and its official responsive website.'},
   about:{title:'About Dmitriy Savva',description:'Meet Dmitriy Savva, a self-taught desktop and web developer since 2023, focused on modern interfaces, maintainable code and practical solutions.'},
   services:{title:'Development Services',description:'Website development, responsive landing pages and bug fixing services for individuals and startups. Work with Dmitriy Savva at NYVEX.'},
   contact:{title:'Contact Dmitriy Savva',description:'Have a project idea or technical brief? Contact Dmitriy Savva via the NYVEX form, email or Upwork to discuss websites and development work.'},
@@ -16,8 +17,9 @@ const details:Record<Locale,Record<SeoPage,Info>> = {
   'initra-site':{title:'Initra — Official Website',description:'Discover the official Initra website, presenting the Linux setup manager, features, compatibility and download information.'}
  },
  ua:{
+  roundtrace:{title:'RoundTrace для FACEIT',description:'Завантажте RoundTrace для Chrome або Brave та встановіть за інструкцією.'},
   home:{title:'Dmitriy Savva — Розробник програм і сайтів',description:'NYVEX — портфоліо Dmitriy Savva. Створюю адаптивні сайти, програми для Linux і сучасні цифрові рішення з продуманим дизайном.'},
-  projects:{title:'Проєкти — Initra та її сайт',description:'Перегляньте проєкти Dmitriy Savva: застосунок Initra для налаштування Linux на Python та PySide6 і його офіційний адаптивний сайт.'},
+  projects:{title:'Проєкти — Initra та RoundTrace',description:'Перегляньте проєкти Dmitriy Savva: застосунок Initra для налаштування Linux на Python та PySide6 і його офіційний адаптивний сайт.'},
   about:{title:'Про Dmitriy Savva',description:'Дізнайтеся більше про Dmitriy Savva: самостійно вивчаю програмування з 2023 року, створюю сайти, програми та сучасні інтерфейси.'},
   services:{title:'Послуги з розробки',description:'Розробка сайтів, адаптивних лендінгів та виправлення помилок для приватних клієнтів і стартапів. Співпраця з NYVEX.'},
   contact:{title:'Зв’язатися з Dmitriy Savva',description:'Маєте ідею або технічне завдання? Напишіть Dmitriy Savva через форму NYVEX, email або Upwork, щоб обговорити співпрацю.'},
@@ -27,7 +29,7 @@ const details:Record<Locale,Record<SeoPage,Info>> = {
  }
 };
 const suffix:Record<SeoPage,string> = {
- home:'',projects:'projects/',about:'about/',services:'services/',contact:'contact/',
+ roundtrace:'projects/roundtrace/',home:'',projects:'projects/',about:'about/',services:'services/',contact:'contact/',
  'privacy-policy':'privacy-policy/','initra-app':'projects/initra-app/','initra-site':'projects/initra-site/'
 };
 export function seoUrl(locale:Locale,page:SeoPage){return `${SITE_URL}/${locale}/${suffix[page]}`;}

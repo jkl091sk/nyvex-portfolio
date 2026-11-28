@@ -267,3 +267,15 @@ body > .header{position:sticky;top:0;z-index:150}
 .language-switch a:not(.is-active):hover{color:#EBD8F0;transform:translateY(-1px)}
 .language-switch a:active{transform:scale(.94)}
 @media(prefers-reduced-motion:reduce){.language-switch .language-switch__indicator,.language-switch a{transition:none!important;transform:none}.language-switch[data-active="ua"] .language-switch__indicator{left:calc(50% + 1px)}}
+
+.rt-release{padding-block:clamp(7rem,12vw,11rem) 5rem}
+.rt-hero{display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:2.5rem 0;border-bottom:1px solid #50483f}
+.rt-hero h1{font-size:clamp(2.8rem,7vw,6rem);letter-spacing:-.055em;margin:.35em 0}
+.rt-hero .button{margin-top:1.5rem}.rt-mark{width:clamp(64px,14vw,160px);height:auto}
+.rt-release section{max-width:52rem;margin-top:3rem}.rt-release h2{font-size:clamp(1.45rem,3vw,2.15rem);margin-bottom:1rem}
+.rt-release p,.rt-release li{max-width:65ch;line-height:1.65}.rt-release section p+p{margin-top:.75rem}
+.rt-release ol{list-style:decimal;padding-inline-start:1.6rem}.rt-release li{padding:.45rem 0 .45rem .25rem}
+.rt-release li::marker,.rt-release code{color:#f3c590}.rt-release section .text-link{margin-top:1rem}
+.rt-project-link{display:flex;align-items:center;gap:1.5rem;padding:1.75rem;border:1px solid #49433d;margin-top:1.5rem;border-radius:12px}
+.rt-project-link img{width:54px}.rt-project-link strong{display:block;font-size:1.7rem}.rt-project-link:hover{border-color:#f3c590}
+@media(max-width:550px){.rt-hero{flex-direction:column-reverse;align-items:start;gap:.5rem}.rt-project-link{padding:1.1rem;gap:1rem}}
